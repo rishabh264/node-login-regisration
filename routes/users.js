@@ -9,7 +9,7 @@ router.get('/login', (req, res) => res.render('login'));
 router.get('/register', (req, res) => res.render('register'));
 
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { name, email, password, password2, mobile } = req.body;
   let errors = [];
 
   if (!name || !email || !password || !password2 || !mobile) {
@@ -24,11 +24,11 @@ router.post('/register', (req, res) => {
     errors.push({ msg: 'Password must be at least 6 characters' });
   }
 
-  if (mobile.length = 10) {
+  if (mobile.length != 10) {
     errors.push({ msg: 'mobile no must be at least 10 digits' });
   }
 
-  
+
 
   if (errors.length > 0) {
     res.render('register', {
